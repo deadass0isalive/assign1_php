@@ -8,22 +8,32 @@ steps >>>>>
 
 1: install these >>  apache2 / httpd , PHP and MYSQL
 2: once mysql is ready Execute following commands:
-  
-    CREATE DATABASE mydb;     //to create new database
-    USE mydb;                 
-    CREATE TABLE login (username varchar(50), password varchar(50));    //this command will create new table named as login with username and password attribute
+
+
+//to create new database
+
+    CREATE DATABASE mydb;
     
-    thats it....
+//to use mydb as your default db
+    
+    USE mydb;                 
+
+//this command will create new table named as login with username and password attribute
+
+    CREATE TABLE login (username varchar(50), password varchar(50));
+  
+thats it....
     
 3: now copy these files all files (index.html, signup.html/php..) to /var/www/html/
 
 4: IMPORTANT STEP:
     
-    if you are using UBUNTU server in AWS run following command
+ if you are using UBUNTU server in AWS run following command
       
       sudo cat /etc/mysql/debian.cnf
     
-    you will see output like this >
+you will see output like this >>>
+
     ---------------------------------------------------------
     # Automatically generated for Debian scripts. DO NOT TOUCH!
       [client]
