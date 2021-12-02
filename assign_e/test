@@ -1,0 +1,26 @@
+#!/bin/bash
+
+TODAY=`date +"%d-%m-%y-%T"`
+echo $TODAY
+BACKUP_PATH='/home/ubuntu/tmp'
+HOST='localhost'
+USER='debian-sys-maint'
+PASS='Rmmt7taOKG6YUb10'
+DB='mydb'
+
+echo "Initiating backup of ${DB}..."
+
+mysqldump -h ${HOST} -u ${USER} -p${PASS} ${DB} > ${BACKUP_PATH}/${DB}-${TODAY}.sql
+
+if [ $? -eq 0 ]; then
+	echo "Backup of database ${DB} has been succesfully created.."
+else
+	echo "Error found.."
+fi
+
+count=`ls ${BACKUP_PATH}|grep ${DB} | wc -l`
+echo $count
+
+if [ $count -gt 7 ]; then
+	rm -f ${BACKUP_PATH}/$(ls -Str ${BACKUP_PATH} | grep -v test  | head -1)
+fi
